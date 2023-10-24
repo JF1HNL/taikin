@@ -3,7 +3,7 @@ let now = new Date()
 function tweet() {
   const content = {
     url: window.location.href,
-    text: `【退勤】${now.getHours()}時${now.getMinutes()}分 @open_kim_ #退勤ボタン `,
+    text: `【退勤】${now.getHours()}時${now.getMinutes()}分 @open_kim_ `,
     tag: ["退勤ボタン"]
   };
   for (let key in content) {
