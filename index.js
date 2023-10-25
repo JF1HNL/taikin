@@ -11,7 +11,18 @@ function tweet() {
   }
   //window.location.href = "https://twitter.com/intent/tweet?url=" + content.url + "&text=" + content.text + "&hashtags=" + content.tag
   //window.open("https://twitter.com/intent/tweet?url=" + content.url + "&text=" + content.text + "&hashtags=" + content.tag)
-  window.location.href = "twitter://post?message=" + content.text + content.url
+
+  let to_url = ""
+  const ua = window.navigator.userAgent.toLowerCase();
+
+  if(ua.indexOf("android") !== -1) {
+    to_url = "twitter://post?message=" + content.text + content.url
+  } else if(ua.indexOf("iphone") !== -1 || ua.indexOf("ipad") !== -1) {
+    to_url = "twitter://post?message=" + content.text + content.url
+  } else {
+    to_url = "https://twitter.com/intent/tweet?url=" + content.url + "&text=" + content.text + "&hashtags=" + content.tag
+  }
+  window.location.href = to_url
 }
 
 tweet()
